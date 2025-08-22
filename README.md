@@ -5,7 +5,7 @@
 [Arista EAPI]: https://www.arista.com/assets/data/pdf/Whitepapers/Arista_eAPI_FINAL.pdf
 [Julia]: https://julialang.org/
 
-[![docs-stable badge](https://img.shields.io/badge/docs-dev-blue.svg)](https://david-macmahon.github.io/AristaEAPI.jl/stable)
+[![docs-stable badge](https://img.shields.io/badge/docs-stable-blue.svg)](https://david-macmahon.github.io/AristaEAPI.jl/stable)
 [![docs-dev badge](https://img.shields.io/badge/docs-dev-blue.svg)](https://david-macmahon.github.io/AristaEAPI.jl/dev)
 
 ## Overview
