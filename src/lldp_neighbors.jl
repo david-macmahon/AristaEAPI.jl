@@ -12,7 +12,7 @@ but may be given as `http` instead.
 function lldp_neighbors(host, interfaces="";
     username="admin", password="admin", protocol="https"
 )
-    d = run_commands(host, ["show lldp neighbors $interfaces"];
+    d = run_command(host, "show lldp neighbors $interfaces";
         username, password, protocol
     )
     lldpdata = d.result[1].lldpNeighbors

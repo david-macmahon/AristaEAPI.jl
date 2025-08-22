@@ -53,7 +53,15 @@ function run_commands(host, cmds::AbstractVector;
     d
 end
 
-function run_commands(host, cmd::AbstractString;
+"""
+    run_command(host, cmd::AbstractString; username, password, protocol)
+
+Run Arista command `cmd` on `host` using Arista EAPI.
+
+`username` and `password` default to `admin`.  `protocol` defaults to `https`,
+but may be given as `http` instead.
+"""
+function run_command(host, cmd::AbstractString;
     username="admin", password="admin", protocol="https"
 )
     run_commands(host, [cmd]; username, password, protocol)

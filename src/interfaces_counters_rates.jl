@@ -12,7 +12,7 @@ but may be given as `http` instead.
 function interfaces_counters_rates(host, interfaces="";
     username="admin", password="admin", protocol="https"
 )
-    d = run_commands(host, ["show interfaces $interfaces counters rates"];
+    d = run_command(host, "show interfaces $interfaces counters rates";
         username, password, protocol
     )
     ifdata = d.result[1].interfaces

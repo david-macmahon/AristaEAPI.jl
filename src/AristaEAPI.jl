@@ -2,7 +2,7 @@ module AristaEAPI
 
 using Base64, Downloads, Random, JSON3
 
-export run_commands, interfaces_counters_rates, lldp_neighbors,
+export run_command, run_commands, interfaces_counters_rates, lldp_neighbors,
        mac_address_table
 
 include("run_commands.jl")

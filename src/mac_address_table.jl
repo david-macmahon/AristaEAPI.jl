@@ -14,9 +14,9 @@ but may be given as `http` instead.
 function mac_address_table(host, interfaces=""; address="",
     username="admin", password="admin", protocol="https"
 )
-    d = run_commands(host, ["show mac address-table " *
+    d = run_command(host, "show mac address-table " *
             (isempty(address) ? "" : "address $address") *
-            (isempty(interfaces) ? "" : "interface $interfaces")];
+            (isempty(interfaces) ? "" : "interface $interfaces");
         username, password, protocol
     )
     macdata = d.result[1].unicastTable.tableEntries
