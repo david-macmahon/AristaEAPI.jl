@@ -1,7 +1,7 @@
 name = "AristaEAPI"
 uuid = "ad37f0da-0e81-49a1-9750-9d3254413305"
 authors = ["David MacMahon <davidm@astro.berkeley.edu>"]
-version = "0.0.1"
+version = "0.0.2"
 
 [deps]
 Base64 = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
