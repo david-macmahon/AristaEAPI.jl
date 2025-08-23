@@ -26,4 +26,7 @@ end
 
 numbered(s::Symbol) = numbered(string(s))
 
+split_numbered(s::AbstractString, delim="/") = numbered.(Tuple(split(s, delim)))
+split_numbered(s::Symbol, delim="/") = numbered.(Tuple(split(string(s), delim)))
+
 end # module AristaEAPI

@@ -17,9 +17,8 @@ function interfaces_counters_rates(host, interfaces="";
     )
     ifdata = d.result[1].interfaces
 
-    map(sort(collect(keys(ifdata)); by=numbered)) do ifname
+    map(sort(collect(keys(ifdata)); by=split_numbered)) do ifname
         ifstats = ifdata[ifname]
-        #@show ifname ifstats
         (;
             port        = string(ifname),
             description = string(ifstats.description),
