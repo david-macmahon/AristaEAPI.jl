@@ -30,7 +30,7 @@ struct MACAddressRecord <: AbstractAristaEAPIStruct
     last_move::Union{Float64, Missing}
 end
 
-function MACAddressRecord()
+function MACAddressRecord(mac)
     MACAddressRecord(
         getas(Int, mac, :vlanId),
         getas(String, mac, :macAddress),
