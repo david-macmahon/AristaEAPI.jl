@@ -19,10 +19,10 @@ function lldp_neighbors(host, interfaces="";
 
     map(lldpdata) do lldp
         (;
-            port            = string(lldp.port),
-            neighbor_device = string(lldp.neighborDevice),
-            neighbor_port   = string(lldp.neighborPort),
-            ttl             = Int(lldp.ttl)
+            port            = getas(String, lldp, :port),
+            neighbor_device = getas(String, lldp, :neighborDevice),
+            neighbor_port   = getas(String, lldp, :neighborPort),
+            ttl             = getas(Int, lldp, :ttl)
         )
     end
 end

@@ -21,14 +21,14 @@ function interfaces_counters_rates(host, interfaces="";
         ifstats = ifdata[ifname]
         (;
             port        = string(ifname),
-            description = string(ifstats.description),
-            interval    = Int(ifstats.interval),
-            inBpsRate   = Float64(ifstats.inBpsRate),
-            inPktsRate  = Int(haskey(ifstats, :inPktsRate) ? ifstats.inPktsRate : 0),
-            inPpsRate   = Float64(ifstats.inPpsRate),
-            outBpsRate  = Float64(ifstats.outBpsRate),
-            outPktsRate = Int(haskey(ifstats, :outPktsRate) ? ifstats.outPktsRate : 0),
-            outPpsRate  = Float64(ifstats.outPpsRate)
+            description = getas(String, ifstats, :description),
+            interval    = getas(Int, ifstats, :interval),
+            in_bps      = getas(Float64, ifstats, :inBpsRate),
+            in_util     = getas(Float64, ifstats, :inPktsRate),
+            in_pps      = getas(Float64, ifstats, :inPpsRate),
+            out_bps     = getas(Float64, ifstats, :outBpsRate),
+            out_util    = getas(Float64, ifstats, :outPktsRate),
+            out_pps     = getas(Float64, ifstats, :outPpsRate)
         )
     end
 end

@@ -22,12 +22,12 @@ function mac_address_table(host, interfaces=""; address="",
     macdata = d.result[1].unicastTable.tableEntries
     map(macdata) do mac
         (;
-            vlan        = Int(mac.vlanId),
-            mac_address = string(mac.macAddress),
-            type        = string(mac.entryType),
-            port        = string(mac.interface),
-            moves       = Int(mac.moves),
-            last_move   = Float64(mac.lastMove)
+            vlan        = getas(Int, mac, :vlanId),
+            mac_address = getas(String, mac, :macAddress),
+            type        = getas(String, mac, :entryType),
+            port        = getas(String, mac, :interface),
+            moves       = getas(Int, mac, :moves),
+            last_move   = getas(Float64, mac, :lastMove)
         )
     end
 end
