@@ -53,7 +53,7 @@ This package provides high level functions for some commonly used commands.
 These function return the results as a `Vector` of structures.  Each functions
 has a corresponding structure defined for it.  The returned `Vector`s are
 compatible with `Tables.jl`, so they can be used with any `Table.jl` comsumer,
-such as [`PrettyTables.jl`][].  When used with `PrettyPrint`, `pretty_table`
+such as [`PrettyTables.jl`][].  When used with `PrettyTables`, `pretty_table`
 methods are defined to alter some default keyword argument values to display all
 entries and provide more tailored alignment (as shown in the example below).
 

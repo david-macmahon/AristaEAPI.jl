@@ -21,9 +21,10 @@ predicate function, such as `filter`, `findall`, etc.
 These function return the results as a `Vector` of structures.  Each functions
 has a corresponding structure defined for it.  The returned `Vector`s are
 compatible with `Tables.jl`, so they can be used with any `Table.jl` consumer,
-such as [`PrettyTables.jl`][].  When used with `PrettyPrint`, `pretty_table`
-methods are defined to alter some default keyword argument values to display all
-entries and provide more tailored alignment (as shown in the example below).
+such as [`PrettyTables.jl`](https://ronisbr.github.io/PrettyTables.jl/stable/)
+When used with `PrettyTables`, `pretty_table` methods are defined to alter some
+default keyword argument values to display all entries and provide more tailored
+alignment (as shown in the example below).
 
 ```@docs
 interfaces_counters_rates
@@ -113,5 +114,3 @@ julia> reply[:result]
 
 ```@index
 ```
-
-[`PrettyTables`]: https://ronisbr.github.io/PrettyTables.jl/stable/
