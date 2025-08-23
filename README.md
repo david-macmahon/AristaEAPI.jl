@@ -50,8 +50,14 @@ Here is a quick summary of the low level and high level functions.  See
 ### High level
 
 This package provides high level functions for some commonly used commands.
-These function return the results in a more concise format (i.e. as a
-`Vector{NamedTuple}`).
+These function return the results as a `Vector` of structures.  Each functions
+has a corresponding structure defined for it.  The returned `Vector`s are
+compatible with `Tables.jl`, so they can be used with any `Table.jl` comsumer,
+such as [`PrettyTables.jl`][].  When used with `PrettyPrint`, `pretty_table`
+methods are defined to alter some default keyword argument values to display all
+entries and provide more tailored alignment (as shown in the example below).
+
+[`PrettyTables.jl`]: https://ronisbr.github.io/PrettyTables.jl/stable/
 
 ```julia
     interfaces_counters_rates(host, interfaces=""; username, password, protocol)
@@ -65,9 +71,23 @@ These function return the results in a more concise format (i.e. as a
     mac_address_table(host, interfaces=""; address="", username, password, protocol)
 ```
 
-Hint: [`PrettyTables.jl`] can print a `Vector{NamedTuple}` as a pretty table.
+#### Example
 
-[`PrettyTables.jl`]: https://ronisbr.github.io/PrettyTables.jl/stable/
+```julia-repl
+julia> interfaces_counters_rates("myswitch", "et4/1-et5/4")|>pretty_table
+┌─────────────┬─────────────┬──────────┬────────────────┬──────────────┬──────────────┬─────────┬─────────────┬──────────┐
+│ port        │ description │ interval │         in_bps │      in_util │       in_pps │ out_bps │    out_util │  out_pps │
+├─────────────┼─────────────┼──────────┼────────────────┼──────────────┼──────────────┼─────────┼─────────────┼──────────┤
+│ Ethernet4/1 │             │      300 │    9.10519e9   │ 91.4426      │  2.44134e5   │ 21967.1 │ 0.000232733 │  8.16335 │
+│ Ethernet4/2 │             │      300 │    9.1052e9    │ 91.4426      │  2.44134e5   │ 21947.4 │ 0.000232518 │  8.1528  │
+│ Ethernet4/3 │             │      300 │    9.10519e9   │ 91.4426      │  2.44134e5   │ 21944.4 │ 0.000232479 │  8.14663 │
+│ Ethernet4/4 │             │      300 │    9.1052e9    │ 91.4426      │  2.44134e5   │ 21944.6 │ 0.000232483 │  8.1481  │
+│ Ethernet5/1 │             │      300 │    5.03642e-17 │  5.31133e-25 │  1.71821e-20 │ 21686.8 │ 0.000229122 │  7.65873 │
+│ Ethernet5/2 │             │      300 │    9.1052e9    │ 91.4426      │  2.44134e5   │ 21955.6 │ 0.000232627 │  8.16933 │
+│ Ethernet5/3 │             │      300 │ 5682.48        │  7.307e-5    │ 10.1532      │ 32662.7 │ 0.000370916 │ 27.6806  │
+│ Ethernet5/4 │             │      300 │    9.1052e9    │ 91.4426      │  2.44134e5   │ 21943.1 │ 0.000232465 │  8.14637 │
+└─────────────┴─────────────┴──────────┴────────────────┴──────────────┴──────────────┴─────────┴─────────────┴──────────┘
+```
 
 ### Low level
 

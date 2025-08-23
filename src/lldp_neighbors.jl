@@ -1,7 +1,42 @@
 """
+    struct LLDPNeighbors <: AbstractAristaEAPIStruct
+        port::Union{String, Missing}
+        neighbor_device::Union{String, Missing}
+        neighbor_port::Union{String, Missing}
+        ttl::Union{Int, Missing}
+    end
+
+Structure of LLDP neighbor info returned by [`lldp_neighbors`](@ref).
+
+# Fields
+
+| Name              | Description
+|:------------------|:------------
+| `port`            | Interface name
+| `neighbor_device` | Neighbor name
+| `neighbor_port`   | Neighbor interface
+| `ttl`             | Time to live
+"""
+struct LLDPNeighbors <: AbstractAristaEAPIStruct
+    port::Union{String, Missing}
+    neighbor_device::Union{String, Missing}
+    neighbor_port::Union{String, Missing}
+    ttl::Union{Int, Missing}
+end
+
+function LLDPNeighbors(lldp)
+    LLDPNeighbors(
+        getas(String, lldp, :port),
+        getas(String, lldp, :neighborDevice),
+        getas(String, lldp, :neighborPort),
+        getas(Int, lldp, :ttl)
+    )
+end
+
+"""
     lldp_neighbors(host[, interfaces]; username, password, protocol)
 
-Return `NamedTuple` of LLDP neighbors of `host`.
+Return `Vector{LLDPNeighbors}` of LLDP neighbors of `host`.
 
 `interfaces` may be given as a comma separated string of interfaces or a Vector
 of interfaces to be queried.  If not given, all interfaces will be queried.
@@ -17,14 +52,7 @@ function lldp_neighbors(host, interfaces="";
     )
     lldpdata = d.result[1].lldpNeighbors
 
-    map(lldpdata) do lldp
-        (;
-            port            = getas(String, lldp, :port),
-            neighbor_device = getas(String, lldp, :neighborDevice),
-            neighbor_port   = getas(String, lldp, :neighborPort),
-            ttl             = getas(Int, lldp, :ttl)
-        )
-    end
+    map(LLDPNeighbors, lldpdata)
 end
 
 function lldp_neighbors(host, interfaces::AbstractVector;
