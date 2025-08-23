@@ -64,6 +64,10 @@ entries and provide more tailored alignment (as shown in the example below).
 ```
 
 ```julia
+    interfaces_transceiver(host, interfaces=""; username, password, protocol)
+```
+
+```julia
     lldp_neighbors(host, interfaces=""; username, password, protocol)
 ```
 

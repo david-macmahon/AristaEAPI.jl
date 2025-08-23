@@ -2,13 +2,15 @@ module AristaEAPI
 
 using Base64, Downloads, Random, JSON3
 
-export run_command, run_commands, interfaces_counters_rates, lldp_neighbors,
-       mac_address_table, isdynamic, isstatic
+export run_command, run_commands, interfaces_counters_rates,
+       interfaces_transceiver, lldp_neighbors, mac_address_table, isdynamic,
+       isstatic
 
 abstract type AbstractAristaEAPIStruct end
 
 include("run_commands.jl")
 include("interfaces_counters_rates.jl")
+include("interfaces_transceiver.jl")
 include("lldp_neighbors.jl")
 include("mac_address_table.jl")
 

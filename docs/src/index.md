@@ -28,6 +28,7 @@ alignment (as shown in the example below).
 
 ```@docs
 interfaces_counters_rates
+interfaces_transceiver
 lldp_neighbors
 mac_address_table
 ```
@@ -65,6 +66,7 @@ The structures defined by `AristaEAPI.jl` are documented here.
 
 ```@docs
 AristaEAPI.InterfacesCountersRates
+AristaEAPI.InterfacesTransceiver
 AristaEAPI.LLDPNeighbors
 AristaEAPI.MACAddressRecord
 ```
